@@ -17,3 +17,14 @@
   outline: none;
   border: none;
 }
+
+.note_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-icon {
+  cursor: pointer;
+  width: 1.75rem;
+}
