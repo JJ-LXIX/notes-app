@@ -44,8 +44,8 @@ const Note = (props) => {
     timeout = setTimeout(func, timer);
   };
 
-  const updateText = (text) => {
-    debounce(() => props.updateText(text));
+  const updateText = (text, id) => {
+    debounce(() => props.updateText(text, id));
   };
 
   return (
@@ -53,7 +53,7 @@ const Note = (props) => {
       <textarea
         className="note_text custom-scroll"
         defaultValue={props.note.text}
-        onChange={(e) => updateText(e.target.value.note.id)}
+        onChange={(event) => updateText(event.target.value, props.note.id)}
       />
       <div className="note_footer">
         <p>{formatDate(props.note.time)} </p>
