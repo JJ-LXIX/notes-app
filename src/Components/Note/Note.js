@@ -1,6 +1,10 @@
 import React from "react";
 import "./Note.css";
 import deleteIcon from "../../images/binIcon.png";
+
+let timer = 500,
+  timeout;
+
 const Note = (props) => {
   const formatDate = (value) => {
     if (!value) return "";
@@ -35,11 +39,21 @@ const Note = (props) => {
     return `${hrs}:${min} ${amPm} ${day} ${month}`;
   };
 
+  const debounce = (func) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(func, timer);
+  };
+
+  const updateText = (text) => {
+    debounce(() => props.updateText(text));
+  };
+
   return (
     <div className="note " style={{ backgroundColor: props.note.color }}>
       <textarea
         className="note_text custom-scroll"
         defaultValue={props.note.text}
+        onChange={(e) => updateText(e.target.value.note.id)}
       />
       <div className="note_footer">
         <p>{formatDate(props.note.time)} </p>

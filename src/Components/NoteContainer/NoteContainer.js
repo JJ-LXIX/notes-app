@@ -19,7 +19,12 @@ const NoteContainer = (props) => {
       <h2>Notes</h2>
       <div className="note-container-notes custom-scroll">
         {notes.map((item) => (
-          <Note key={item.id} note={item} deleteNote={props.deleteNote} />
+          <Note
+            key={item.id}
+            note={item}
+            deleteNote={props.deleteNote}
+            updateText={props.updateText}
+          />
         ))}
       </div>
     </div>
